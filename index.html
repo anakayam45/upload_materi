@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Upload data bang</title>
+</head>
+<body>
+    <div class="course blue fix center border5" id="course">
+        <label>Pilih course:</label>
+    <select class="border5 opacity" id="dropDown"></select>
+    <div class="cbtn border5" onclick="addCourse()"> + kursus</div>
+    <select class="border5 opacity" id="materi"></select>
+    <div class="cbtn border5" onclick="addCourse()"> + meteri</div>
+    </div>
+
+    <div class="container black">
+        <div class="width white border padding10" id="textH"></div>
+        <textarea class="width black text" id="isi" oninput="myFunc(this)"></textarea>
+    </div>
+
+    <div class="btn fix border8 blue bottom" onclick="sendlist()">Kirim</div>
+
+    <script src="script\script.js"></script>
+</body>
+</html>
