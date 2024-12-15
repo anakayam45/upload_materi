@@ -1,13 +1,15 @@
+let courseId = 0
+let materiId = 0
+
 function createOption(id, name) {
     const option = document.createElement("option");
-    option.value = name;
+    option.value = id;
     option.textContent = name;
-    option.id = "option" + id;
+    option.id = id;
     return option;
 }
 
 const _dropDown = document.querySelector("#dropDown")
-let _courseId = _dropDown.value
 function _getCourseName() {
     fetch(`http://localhost/upload/course.php?see=1`)
     .then(response => response.json())
@@ -15,24 +17,29 @@ function _getCourseName() {
         _dropDown.innerHTML = "";
         data.forEach(item => {
             _dropDown.appendChild(createOption(item.id, item.name));
-        });
-    });
-}
-_getCourseName()
+        })
+    })
+    .then(() => {
+    courseId = _dropDown.value
+    materiId = _materi.value
+    })
+}_getCourseName()
 
 const _materi = document.querySelector("#materi")
-let idMateri = _materi.value
 function _getMateriName() {
     fetch(`http://localhost/upload/materi.php?see=1`)
     .then(response => response.json())
     .then(data => {
         _materi.innerHTML = "";
-        data.forEach(item => {
-            _materi.appendChild(createOption(item.id, item.name));
-        });
-    });
-}
-_getMateriName()
+            data.forEach(item => {
+                _dropDown.appendChild(createOption(item.id, item.name));
+            })
+    })
+    .then(() => {
+    courseId = _dropDown.value
+    materiId = _materi.value
+    })
+}_getMateriName()
 
 function addCourse() {
     const name = prompt("Nama course")
@@ -41,9 +48,9 @@ function addCourse() {
 
     if (!name || !desc ||!dura) {
         alert("Semua filed wajib di isi")
-    }
-
+    } else {
     const formData = new FormData()
+    formData.append("course", 1)
     formData.append("nama", name)
     formData.append("desc", desc)
     formData.append("dura", dura)
@@ -51,9 +58,30 @@ function addCourse() {
     fetchData("course.php", formData, "POST")
     _getCourseName()
     _getMateriName()
+    }
+}
+
+function addMateri() {
+    const name = prompt("Nama materi")
+    const desc = prompt("Tambahkan deskripsi")
+
+    if (!name || !desc) {
+        alert("Semua filed wajib di isi")
+    } else {
+        const formData = new FormData()
+        formData.append("course", 1)
+        formData.append("id", courseId)
+        formData.append("title", name)
+        formData.append("desc", desc)
+
+        fetchData("materi.php", formData, "POST")
+        _getCourseName()
+        _getMateriName()
+    }
 }
 
 function fetchData(file, formData, method) {
+    console.log(materiId, courseId)
     fetch(`http://localhost/upload/`+file, {
         method: method,
         body: formData
@@ -65,5 +93,5 @@ function fetchData(file, formData, method) {
         return response.text();
     })
     .then((data) => alert(data))
-    .catch((err) => alert(err.message))
+    .catch((err) => alert("Error bang", err))
 }

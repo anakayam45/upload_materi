@@ -9,10 +9,10 @@
 <body>
     <div class="course blue fix center border5" id="course">
         <label>Pilih course:</label>
-    <select class="border5 opacity" id="dropDown"></select>
+    <select class="border5 opacity" id="dropDown" onchange="getId()"></select>
     <div class="cbtn border5" onclick="addCourse()"> + kursus</div>
-    <select class="border5 opacity" id="materi"></select>
-    <div class="cbtn border5" onclick="addCourse()"> + meteri</div>
+    <select class="border5 opacity" id="materi" onchange="getId()"></select>
+    <div class="cbtn border5" onclick="addMateri()"> + meteri</div>
     </div>
 
     <div class="container black">
@@ -20,7 +20,7 @@
         <textarea class="width black text" id="isi" oninput="myFunc(this)"></textarea>
     </div>
 
-    <div class="btn fix border8 blue bottom" onclick="sendlist()">Kirim</div>
+    <div class="btn fix border8 blue bottom" onclick="sendList()">Kirim</div>
 
     <script src="script\script.js"></script>
     <script src="script\miror_text.js"></script>
