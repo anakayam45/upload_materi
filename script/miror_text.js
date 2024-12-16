@@ -11,6 +11,9 @@ function myFunc(code) {
         if (trimText.substring(0, 4) == "url:") {
             const imageUrl = trimText.substring(4)
             myList += `<a src="${imageUrl}">${imageUrl}</a>`
+        } else if (trimText.substring(0, 5) == "head:") {
+            const imageUrl = trimText.substring(5)
+            myList += `<h3>${imageUrl}</h3>`
         } else {
             myList += `<p>${trimText}</p>`
         }
@@ -29,24 +32,22 @@ function sendList() {
             resultData = ["", ""]
             if (trimText.substring(0, 4) == "url:") {
                 const imageUrl = trimText.substring(4)
-                resultData = [imageUrl, "code"]
+                resultData = [imageUrl, "image"]
+            } else if (trimText.substring(0, 5) == "head:") {
+                const imageUrl = trimText.substring(5)
+                resultData = [imageUrl, "head"]
             } else {
                 resultData = [trimText, "text"]
             }
-            if (materiId == 0) {
+            if (materiId == null) {
                 addMateri()
             } else {
                 const formData = new FormData()
+                formData.append("materi", 1)
                 formData.append("id", materiId)
                 formData.append("content", resultData[0])
                 formData.append("type", resultData[1])
                 fetchData("materi.php", formData, "POST")
             }
         }
-}
-
-function getId() {
-    courseId = _dropDown.value
-    materiId = _materi.value
-    console.log(courseId, materiId)
 }

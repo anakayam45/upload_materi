@@ -10,6 +10,8 @@ function createOption(id, name) {
 }
 
 const _dropDown = document.querySelector("#dropDown")
+const _materi = document.querySelector("#materi")
+
 function _getCourseName() {
     fetch(`http://localhost/upload/course.php?see=1`)
     .then(response => response.json())
@@ -18,28 +20,29 @@ function _getCourseName() {
         data.forEach(item => {
             _dropDown.appendChild(createOption(item.id, item.name));
         })
+        courseId = _dropDown.value;
+        _getMateriName();
     })
-    .then(() => {
-    courseId = _dropDown.value
-    materiId = _materi.value
-    })
-}_getCourseName()
+}
 
-const _materi = document.querySelector("#materi")
 function _getMateriName() {
-    fetch(`http://localhost/upload/materi.php?see=1`)
+    let url = `http://localhost/upload/materi.php?see=1&id=${courseId}`
+    fetch(url)
     .then(response => response.json())
     .then(data => {
         _materi.innerHTML = "";
             data.forEach(item => {
-                _dropDown.appendChild(createOption(item.id, item.name));
+                _materi.appendChild(createOption(item.id, item.title));
             })
+        materiId = _materi.value
     })
-    .then(() => {
+}
+
+_dropDown.addEventListener("change", () => {
     courseId = _dropDown.value
-    materiId = _materi.value
-    })
-}_getMateriName()
+    _getMateriName()
+})
+_getCourseName()
 
 function addCourse() {
     const name = prompt("Nama course")
@@ -56,8 +59,6 @@ function addCourse() {
     formData.append("dura", dura)
 
     fetchData("course.php", formData, "POST")
-    _getCourseName()
-    _getMateriName()
     }
 }
 
@@ -75,8 +76,6 @@ function addMateri() {
         formData.append("desc", desc)
 
         fetchData("materi.php", formData, "POST")
-        _getCourseName()
-        _getMateriName()
     }
 }
 
@@ -93,5 +92,9 @@ function fetchData(file, formData, method) {
         return response.text();
     })
     .then((data) => alert(data))
+    .then(() => {
+        _getCourseName()
+        _getMateriName()
+    })
     .catch((err) => alert("Error bang", err))
 }
