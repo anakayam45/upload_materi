@@ -10,7 +10,7 @@ function myFunc(code) {
         const trimText = i.trimStart().trimEnd()
         if (trimText.substring(0, 4) == "url:") {
             const imageUrl = trimText.substring(4)
-            myList += `<a src="${imageUrl}">${imageUrl}</a>`
+            myList += `<a href="${imageUrl}">${imageUrl}</a>`
         } else if (trimText.substring(0, 5) == "head:") {
             const imageUrl = trimText.substring(5)
             myList += `<h3>${imageUrl}</h3>`
@@ -23,7 +23,6 @@ function myFunc(code) {
 
 
 function sendList() {
-    console.log(1)
     const text = document.querySelector("#isi")
     let myInput = text.value
     textList = myInput.split("!ini").filter(a => a !== "")
