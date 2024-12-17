@@ -8,26 +8,29 @@
 </head>
 <body>
     <div class="container">
-        <div class="upload-section border5">
-            <h2>Upload Gambar</h2>
-            <form id="uploadForm">
-                <label for="imageInput" class="uploadLabel">Pilih Gambar</label>
-                <input type="file" name="image" id="imageInput" accept="image/*" required>
-                <button type="submit" class="btn blue">Upload</button>
-            </form>
-            <div id="uploadResult"></div>
-        </div>
+        <div class="setting">
+            <div class="upload-section border5">
+                <h2>Upload Gambar</h2>
+                <form id="uploadForm">
+                    <label for="imageInput" class="uploadLabel">Pilih Gambar</label>
+                    <input type="file" name="image" id="imageInput" accept="image/*" required>
+                    <button type="submit" class="btn blue border5">Upload</button>
+                </form>
+                <div id="uploadResult"></div>
+                <a href="upload.php">Log file</a>
+            </div>
 
-        <div class="course-section border5">
-            <h2>Manajemen Course</h2>
-            <div class="dropdowns">
-                <label>Pilih Course:</label>
-                <select class="border5" id="dropDown" onchange="getId()"></select>
-                <button class="cbtn" onclick="addCourse()">+ Kursus</button>
+            <div class="course-section border5">
+                <h2>Manajemen Course</h2>
+                <div class="dropdowns">
+                    <label>Pilih Course:</label>
+                    <select class="border5" id="dropDown" onchange="getId()"></select>
+                    <button class="cbtn" onclick="addCourse()">+ Kursus</button>
 
-                <label>Pilih Materi:</label>
-                <select class="border5" id="materi" onchange="getId()"></select>
-                <button class="cbtn" onclick="addMateri()">+ Materi</button>
+                    <label>Pilih Materi:</label>
+                    <select class="border5" id="materi" onchange="getId()"></select>
+                    <button class="cbtn" onclick="addMateri()">+ Materi</button>
+                </div>
             </div>
         </div>
 

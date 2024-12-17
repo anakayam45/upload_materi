@@ -10,7 +10,7 @@ function myFunc(code) {
         const trimText = i.trimStart().trimEnd()
         if (trimText.substring(0, 4) == "url:") {
             const imageUrl = trimText.substring(4)
-            myList += `<a href="https:./uploads/${imageUrl}">${imageUrl}</a>`
+            myList += `<a href="uploads/${imageUrl}">${imageUrl}</a>`
             console.log(`<a href="https:./uploads/${imageUrl}">${imageUrl}</a>`)
         } else if (trimText.substring(0, 5) == "head:") {
             const imageUrl = trimText.substring(5)
@@ -34,8 +34,8 @@ function sendList() {
                 const imageUrl = trimText.substring(4)
                 resultData = [imageUrl, "image"]
             } else if (trimText.substring(0, 5) == "head:") {
-                const imageUrl = trimText.substring(5)
-                resultData = [imageUrl, "head"]
+                const headText = trimText.substring(5)
+                resultData = [headText, "head"]
             } else {
                 resultData = [trimText, "text"]
             }

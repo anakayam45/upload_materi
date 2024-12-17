@@ -47,6 +47,7 @@ _getCourseName()
 function addCourse() {
     const name = prompt("Nama course")
     const desc = prompt("Tambahkan deskripsi")
+    const image = prompt("Tambahkan link gambar")
     const dura = prompt("Waktu yang dihabiskan")
 
     if (!name || !desc ||!dura) {
@@ -56,6 +57,7 @@ function addCourse() {
     formData.append("course", 1)
     formData.append("nama", name)
     formData.append("desc", desc)
+    formData.append("image", image)
     formData.append("dura", dura)
 
     fetchData("course.php", formData, "POST")

@@ -1,6 +1,6 @@
 const form = document.getElementById('uploadForm');
 const result = document.getElementById('uploadResult');
-
+console.log(1)
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -17,8 +17,6 @@ form.addEventListener('submit', (e) => {
         if (data.status === 'success') {
             result.innerHTML = `Upload berhasil: ${data.file} <br>
             <img src="${data.file}" alt="${data.file}" style="width:200px; margin-top:10px;">`;
-            const text = document.querySelector("#textH")
-            text.value += data.file
         } else {
             result.innerHTML = `Error: ${data.message}`;
         }

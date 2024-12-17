@@ -5,8 +5,9 @@
         if (isset($_POST["nama"]) and isset($_POST["desc"]) and isset($_POST["dura"])) {
             $nama = mysqli_real_escape_string( $conn, $_POST["nama"] );
             $desc = mysqli_real_escape_string( $conn, $_POST["desc"] );
+            $image = mysqli_real_escape_string( $conn, $_POST["image"] );
             $dur = mysqli_real_escape_string( $conn, $_POST["dura"] );
-            $query = "INSERT INTO courses (name, description, category, duration) VALUES ('$nama', '$desc', 'programing', '$dur')";
+            $query = "INSERT INTO courses (name, description, image, category, duration) VALUES ('$nama', '$desc', $image, 'programing', '$dur')";
             if (mysqli_query($conn, $query)) {
                 echo "Berhasil bang rasyid";
             } else {

@@ -53,6 +53,7 @@ h2 {
 /* Upload Section */
 .upload-section, .course-section, .text-section {
     background-color: white;
+    width: 100vw;
     padding: 20px;
     border: 1px solid #ddd;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -141,4 +142,9 @@ input[type="file"] {
 
 .result {
     height: auto;
+}
+
+.setting {
+    display: flex;
+    gap: 20px;
 }
