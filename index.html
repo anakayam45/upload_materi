@@ -4,25 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Upload data bang</title>
+    <title>Data Upload</title>
 </head>
 <body>
-    <div class="course blue fix center border5" id="course">
-        <label>Pilih course:</label>
-    <select class="border5 opacity" id="dropDown" onchange="getId()"></select>
-    <div class="cbtn border5" onclick="addCourse()"> + kursus</div>
-    <select class="border5 opacity" id="materi" onchange="getId()"></select>
-    <div class="cbtn border5" onclick="addMateri()"> + meteri</div>
+    <div class="container">
+        <div class="upload-section border5">
+            <h2>Upload Gambar</h2>
+            <form id="uploadForm">
+                <label for="imageInput" class="uploadLabel">Pilih Gambar</label>
+                <input type="file" name="image" id="imageInput" accept="image/*" required>
+                <button type="submit" class="btn blue">Upload</button>
+            </form>
+            <div id="uploadResult"></div>
+        </div>
+
+        <div class="course-section border5">
+            <h2>Manajemen Course</h2>
+            <div class="dropdowns">
+                <label>Pilih Course:</label>
+                <select class="border5" id="dropDown" onchange="getId()"></select>
+                <button class="cbtn" onclick="addCourse()">+ Kursus</button>
+
+                <label>Pilih Materi:</label>
+                <select class="border5" id="materi" onchange="getId()"></select>
+                <button class="cbtn" onclick="addMateri()">+ Materi</button>
+            </div>
+        </div>
+
+        <!-- Bagian Textarea -->
+        <div class="text-section border5">
+            <h2 class="result">Input Data</h2>
+            <div class="mirror-output" id="textH">Hasil muncul disini</div>
+            <textarea placeholder="Tulis sesuatu di sini..." class="text-input" id="isi" oninput="myFunc(this)"></textarea>
+        </div>
     </div>
 
-    <div class="container black">
-        <div class="width white border padding10" id="textH"></div>
-        <textarea class="width black text" id="isi" oninput="myFunc(this)"></textarea>
+    <!-- Tombol Kirim -->
+    <div class="btn-section">
+        <button class="btn blue border8" onclick="sendList()">Kirim</button>
     </div>
 
-    <div class="btn fix border8 blue bottom" onclick="sendList()">Kirim</div>
-
-    <script src="script\script.js"></script>
-    <script src="script\miror_text.js"></script>
+    <!-- JavaScript -->
+    <script src="script/script.js"></script>
+    <script src="script/miror_text.js"></script>
+    <script src="script/image.js"></script>
 </body>
 </html>

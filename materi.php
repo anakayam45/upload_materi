@@ -13,9 +13,9 @@
         else if (isset($_POST["materi"])) {
             $query = "INSERT INTO material_contents (material_id, content, type) VALUES (".$_POST["id"].", '".$_POST["content"]."', '".$_POST["type"]."');";
             if ($conn -> query($query) == TRUE) {
-                echo 1;
+                echo "Menambahkan". $_POST["content"];
             } else {
-                echo 0;
+                echo "Gagal Menambahkan". $_POST["content"];
             }
         }
         else {
