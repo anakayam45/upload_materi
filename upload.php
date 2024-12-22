@@ -1,17 +1,18 @@
 <?php
 include "db.php";
-    header("Content-Type: application/json");
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['image'])) {
     // Detail file
+    
     $targetDir = "uploads/";
-    $fileName = basename($_FILES['image']['name']);
+    $fileName = urlencode(basename($_FILES['image']['name']));
     $targetFilePath = $targetDir . $fileName;
     $fileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
 
     $allowedTypes = ['jpg', 'jpeg', 'png', 'gif'];
+    header("Content-Type: application/json");
     if (in_array($fileType, $allowedTypes)) {
-        if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFilePath)) {
-            echo json_encode(["status" => "success", "message" => "File uploaded successfully.", "file" => $fileName]);
+        if (move_uploaded_file(($_FILES['image']['tmp_name']), $targetFilePath)) {
+            echo json_encode(["status" => "success", "message" => "File uploaded successfully.", "file" => urlencode($fileName)]);
         } else {
             echo json_encode(["status" => "error", "message" => "Failed to upload file."]);
         }
@@ -20,14 +21,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['image'])) {
     }
 } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $files = array_diff(scandir("uploads/"), array('.', '..'));
-    array_shift($files);
-    echo json_encode(
-        [
-            "status" => "ok",
-            "message"=> $files
-        ]
-    );
+    unset($files[array_search('index.php', $files)]);
+    foreach ($files as $x) {
+        $encodedName = urlencode($x); // Encode nama file untuk digunakan di URL
+        echo "<a href='image.php?name={$encodedName}'>" . htmlspecialchars($x) . "</a><br>";
+    }
 } else {
+    header("Content-Type: application/json");
     echo json_encode(["status" => "error", "message" => "No file uploaded."]);
 }
 ?>

@@ -9,7 +9,7 @@
             $dur = mysqli_real_escape_string( $conn, $_POST["dura"] );
             $query = "INSERT INTO courses (name, description, image, category, duration) VALUES ('$nama', '$desc', $image, 'programing', '$dur')";
             if (mysqli_query($conn, $query)) {
-                echo "Berhasil bang rasyid";
+                echo "Berhasil bang";
             } else {
                 echo "Gagal: " . mysqli_error($conn);
             }
