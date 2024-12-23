@@ -1,7 +1,7 @@
 let textList = []
-let myList = ""
 
 function myFunc(code) {
+    let myList = ""
     const text = document.querySelector("#textH")
     text.textContent = ''
     let myInput = code.value

@@ -6,9 +6,33 @@
     <link rel="stylesheet" href="style.css">
     <script src="script/miror_text.js"></script>
     <title>Data Upload</title>
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .setting {
+            flex: 1;
+            min-width: 300px;
+        }
+        .news-section {
+            flex: 1;
+            min-width: 300px;
+        }
+        .border5 {
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 15px;
+        }
+        .text-section, .news-section {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
+        <!-- Bagian Kiri: Upload Gambar dan Manajemen Course -->
         <div class="setting">
             <div class="upload-section border5">
                 <h2>Upload Gambar</h2>
@@ -29,28 +53,33 @@
                     <button class="cbtn" onclick="addCourse()">+ Kursus</button>
 
                     <label>Pilih Materi:</label>
-                    <select class="border5" id="materi" onchange="getId()"></select>
+                    <select class="border5" id="materi"></select>
                     <button class="cbtn" onclick="addMateri()">+ Materi</button>
                 </div>
             </div>
         </div>
 
-        <!-- Bagian Textarea -->
-        <div class="text-section border5">
-            <h2 class="result">Input Data</h2>
-            <div class="mirror-output" id="textH">Hasil muncul disini</div>
-            <textarea placeholder="Tulis sesuatu di sini..." class="text-input" id="isi" oninput="myFunc(this)"></textarea>
+        <!-- Bagian Kanan: News -->
+        <div class="news-section border5">
+            <h2>News</h2>
+            <textarea placeholder="Tulis berita di sini..." class="text-input" id="newsArea" rows="10" style="width: 100%;"></textarea>
         </div>
-
-        <!-- Bagian Soal -->
-        <div id="pertanyaan"></div>
-<button class="btn blue border8" onclick="addQuest()">Tambah Soal</button>
-
     </div>
+
+    <!-- Bagian Textarea -->
+    <div class="text-section border5">
+        <h2 class="result">Input Data</h2>
+        <div class="mirror-output" id="textH">Hasil muncul disini</div>
+        <textarea placeholder="Tulis sesuatu di sini..." class="text-input" id="isi" oninput="myFunc(this)"></textarea>
+    </div>
+
+    <!-- Bagian Soal -->
+    <div id="pertanyaan"></div>
+    <button class="btn blue border8" onclick="addQuest()">Tambah Soal</button>
+
     <!-- Tombol Kirim -->
     <div class="btn-section">
         <button class="btn blue border8" onclick="sendList()">Kirim</button>
-        
     </div>
 
     <!-- JavaScript -->
