@@ -3,16 +3,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
 }
 
 /* Warna dan Border */
 body {
-    background-color: #f4f4f4;
+    background-color: #f0f8ff;
     color: #333;
+    line-height: 1.6;
 }
 
-h2 {
+h2, h5 {
     margin-bottom: 10px;
 }
 
@@ -25,21 +26,22 @@ h2 {
 }
 
 .blue {
-    background-color: #00a6ff;
+    background-color: #007bff;
     color: #fff;
 }
 
-.cbtn {
-    background-color: #00a6ff;
+.cbtn, .btn {
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 5px 10px;
+    padding: 10px 20px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.cbtn:hover {
-    background-color: #008ad6;
+.cbtn:hover, .btn:hover {
+    background-color: #0056b3;
 }
 
 /* Layout Utama */
@@ -53,7 +55,7 @@ h2 {
 /* Upload Section */
 .upload-section, .course-section, .text-section {
     background-color: white;
-    width: 100vw;
+    width: 100%;
     padding: 20px;
     border: 1px solid #ddd;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -61,32 +63,22 @@ h2 {
 
 .uploadLabel {
     display: block;
-    background-color: #00a6ff;
+    background-color: #007bff;
     color: white;
     padding: 8px 12px;
     text-align: center;
     border-radius: 5px;
     margin-bottom: 10px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .uploadLabel:hover {
-    background-color: #008ad6;
+    background-color: #0056b3;
 }
 
 input[type="file"] {
     display: none;
-}
-
-.btn {
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.btn:hover {
-    opacity: 0.8;
 }
 
 /* Dropdown Section */
@@ -124,8 +116,20 @@ input[type="file"] {
 
 /* Button Section */
 .btn-section {
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
     padding: 10px 20px;
+}
+
+#soal button {
+    margin: 5px;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+#soal button.uploadLabel {
+    margin-right: 10px;
 }
 
 /* Responsif */
@@ -136,15 +140,9 @@ input[type="file"] {
     }
 
     .btn-section {
-        text-align: center;
+        justify-content: center;
     }
 }
-
-.result {
-    height: auto;
-}
-
-.setting {
-    display: flex;
-    gap: 20px;
+#pertanyaan .text-section {
+    margin-bottom: 15px;
 }

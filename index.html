@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="script/miror_text.js"></script>
     <title>Data Upload</title>
 </head>
 <body>
@@ -17,7 +18,7 @@
                     <button type="submit" class="btn blue border5">Upload</button>
                 </form>
                 <div id="uploadResult"></div>
-                <a href="upload.php">Log file</a>
+                <a href="upload.php" target="_blank">Log file</a>
             </div>
 
             <div class="course-section border5">
@@ -40,16 +41,21 @@
             <div class="mirror-output" id="textH">Hasil muncul disini</div>
             <textarea placeholder="Tulis sesuatu di sini..." class="text-input" id="isi" oninput="myFunc(this)"></textarea>
         </div>
-    </div>
 
+        <!-- Bagian Soal -->
+        <div id="pertanyaan"></div>
+<button class="btn blue border8" onclick="addQuest()">Tambah Soal</button>
+
+    </div>
     <!-- Tombol Kirim -->
     <div class="btn-section">
         <button class="btn blue border8" onclick="sendList()">Kirim</button>
+        
     </div>
 
     <!-- JavaScript -->
     <script src="script/script.js"></script>
-    <script src="script/miror_text.js"></script>
+    <script src="script/quest.js"></script>
     <script src="script/image.js"></script>
 </body>
 </html>

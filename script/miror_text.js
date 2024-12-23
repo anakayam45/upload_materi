@@ -1,17 +1,17 @@
 let textList = []
+let myList = ""
 
 function myFunc(code) {
     const text = document.querySelector("#textH")
     text.textContent = ''
-    let myList = ""
     let myInput = code.value
     textList = myInput.split("!ini").filter(a => a !== "")
     for (var i of textList) {
         const trimText = i.trimStart().trimEnd()
         if (trimText.substring(0, 4) == "url:") {
             const imageUrl = trimText.substring(4)
-            myList += `<a href="image.php?${imageUrl}">${imageUrl}</a>`
-            console.log(`<a href="image.php?${imageUrl}">${imageUrl}</a>`)
+            myList += `<img src="image.php?name=${imageUrl}">`
+            // console.log(`<a href="image.php?${imageUrl}" target="_blank">ewfwrrw${imageUrl}</a>`)
         } else if (trimText.substring(0, 5) == "head:") {
             const imageUrl = trimText.substring(5)
             myList += `<h3>${imageUrl}</h3>`
