@@ -50,14 +50,13 @@ function addCourse() {
     const image = prompt("Tambahkan link gambar")
     const dura = prompt("Waktu yang dihabiskan")
 
-    if (!name || !desc ||!dura) {
+    if (!name || !image || !desc ||!dura) {
         alert("Semua filed wajib di isi")
     } else {
     const formData = new FormData()
-    formData.append("course", 1)
     formData.append("nama", name)
-    formData.append("desc", desc)
     formData.append("image", image)
+    formData.append("desc", desc)
     formData.append("dura", dura)
 
     fetchData("course.php", formData, "POST")

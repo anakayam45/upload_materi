@@ -2,16 +2,17 @@
     require 'db.php';
     header("Content-Type: application/json"); // Format respons
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (isset($_POST["nama"]) and isset($_POST["desc"]) and isset($_POST["dura"])) {
+        if (isset($_POST["nama"]) and isset($_POST["image"]) and isset($_POST["desc"]) and isset($_POST["dura"])) {
             $nama = mysqli_real_escape_string( $conn, $_POST["nama"] );
-            $desc = mysqli_real_escape_string( $conn, $_POST["desc"] );
             $image = mysqli_real_escape_string( $conn, $_POST["image"] );
+            $desc = mysqli_real_escape_string( $conn, $_POST["desc"] );
             $dur = mysqli_real_escape_string( $conn, $_POST["dura"] );
-            $query = "INSERT INTO courses (name, description, image, category, duration) VALUES ('$nama', '$desc', $image, 'programing', '$dur')";
+            $query = "INSERT INTO courses (name, description, image, category, duration) VALUES ('$nama', '$desc', '$image', 'programing', '$dur')";
             if (mysqli_query($conn, $query)) {
                 echo "Berhasil bang";
             } else {
                 echo "Gagal: " . mysqli_error($conn);
+                echo $query;
             }
         } else {
             echo "Semua field harus di isi";

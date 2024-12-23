@@ -2,7 +2,6 @@
 include "db.php";
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['image'])) {
     // Detail file
-    
     $targetDir = "uploads/";
     $fileName = urlencode(basename($_FILES['image']['name']));
     $targetFilePath = $targetDir . $fileName;
